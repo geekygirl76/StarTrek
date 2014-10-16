@@ -29,6 +29,9 @@
 
     <script src="vendor/SAT.js"></script>
     <script src="vendor/underscore.js"></script>
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/preloader.js"></script>
+
     <script type="application/javascript" src="vendor/keymaster.js"></script>
 
     <script type="application/javascript" src="lib/util.js"></script>
@@ -45,19 +48,28 @@
 <body>
 
     <img id="background" src="images/sky.jpg">
+
     <canvas id="game-canvas">
     <script>
 
-    var canvasEl = document.getElementById("game-canvas");
-    canvasEl.width = Asteroids.Game.DIM_X;
-    canvasEl.height = Asteroids.Game.DIM_Y;
-    var ctx =  canvasEl.getContext("2d");
+    var imagePreloader = new Preloader.ImagePreloader({
+
+      ship: "./images/ship.png",
+      asteroid: "./images/asteroid.png"
+    }, function(images) {
+        var canvasEl = document.getElementById("game-canvas");
+        canvasEl.width = Asteroids.Game.DIM_X;
+        canvasEl.height = Asteroids.Game.DIM_Y;
+        var ctx =  canvasEl.getContext("2d");
+
+        var game = new Asteroids.Game(images);
+        var gameView = new Asteroids.GameView(game, ctx,images);
+        gameView.start();
+    });
 
 
 
-    var game = new Asteroids.Game();
-    var gameView = new Asteroids.GameView(game, ctx);
-    gameView.start();
+
     </script>
 </body>
 </html>
