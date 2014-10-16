@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>StarTrek</title>
+    <style>
+    html, body, canvas{
+        padding: 0px;
+        margin: 0px;
+    }
+    </style>
+
+</head>
+
+<body>
+    <canvas id="game-canvas"></canvas>
+    <script type="application/javascript" src="vendor/keymaster.js"></script>
+    
+    <script type="application/javascript" src="lib/util.js"></script>
+    <script type="application/javascript" src="lib/movingObject.js"></script>
+    <script type="application/javascript" src="lib/asteroid.js"></script>
+    <script type="application/javascript" src="lib/game.js"></script>
+    <script type="application/javascript" src="lib/gameView.js"></script>
+    <script type="application/javascript" src="lib/ship.js"></script>
+    <script type="application/javascript" src="lib/bullet.js"></script>
+
+
+
+    <script>
+
+    var canvasEl = document.getElementById("game-canvas");
+    canvasEl.width = Asteroids.Game.DIM_X;
+    canvasEl.height = Asteroids.Game.DIM_Y;
+    var ctx =  canvasEl.getContext("2d");
+    // var obj = new Asteroids.MovingObject({pos:[100,100], vel:[10,10], color:"red", radius:10});
+//     obj.draw(ctx);
+//     obj.move();
+//     obj.draw(ctx);
+//
+//     var as = new Asteroids.Asteroid({vel:[50,50], pos: [30, 30] });
+//     as.draw(ctx);
+//     as.move();
+//     as.draw(ctx);
+
+    var game = new Asteroids.Game();
+
+    var gameView = new Asteroids.GameView(game, ctx);
+    gameView.start();
+    </script>
+
+</body>
+</html>
