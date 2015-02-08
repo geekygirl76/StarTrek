@@ -58,8 +58,8 @@
       asteroid: "./images/asteroid.png"
     }, function(images) {
         var canvasEl = document.getElementById("game-canvas");
-        canvasEl.width = Asteroids.Game.DIM_X;
-        canvasEl.height = Asteroids.Game.DIM_Y;
+        canvasEl.width = $(document).width();
+        canvasEl.height = $(document).height();
         var ctx =  canvasEl.getContext("2d");
 
         var game = new Asteroids.Game(images);
